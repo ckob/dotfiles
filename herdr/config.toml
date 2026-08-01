@@ -1,0 +1,25 @@
+onboarding = false
+
+[theme]
+name = "catpuccin"
+auto_switch = true
+# light_name = "catppuccin-latte"
+# dark_name = "catppuccin"
+
+[ui.toast]
+delivery = "off"
+
+[ui.sound]
+enabled = false
+
+[ui]
+show_agent_labels_on_pane_borders = false
+agent_panel_sort = "priority"
+
+[keys]
+prefix = "ctrl+space"
+navigate_workspace_up = "ctrl+p"
+navigate_workspace_down = "ctrl+n"
+
+[experimental]
+kitty_graphics = true

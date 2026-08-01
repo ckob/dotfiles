@@ -1,0 +1,6 @@
+[user]
+  name = Your Name
+  email = work.email@example.com
+
+[credential]
+  helper = /usr/local/share/gcm-core/git-credential-manager

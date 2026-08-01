@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Run gitleaks on staged changes
+gitleaks protect --staged --verbose

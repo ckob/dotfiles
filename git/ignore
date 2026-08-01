@@ -1,0 +1,12 @@
+.idea/
+.aider*
+.vectorcode*
+.zed*
+.DS_Store
+.windsurfrules*
+.cursor/*
+
+.gemini/*
+.gemini-clipboard/
+
+.antigravitycli

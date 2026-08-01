@@ -1,0 +1,127 @@
+{
+    "editor.fontFamily": "JetBrains Mono",
+    // "editor.fontWeight": "500",
+    // // "editor.fontFamily": "Source Code Pro",
+    "editor.fontSize": 13,
+    "editor.fontLigatures": false,
+    // "editor.rulers": [
+    //   120
+    // ],
+    "editor.lineNumbers": "relative",
+    "editor.formatOnSave": false,
+    "files.autoSave": "off",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "scm.defaultViewMode": "tree",
+    "files.associations": {
+        "*.yml": "yaml"
+    },
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "editor.multiCursorLimit": 20000,
+    "redhat.telemetry.enabled": false,
+    "window.zoomLevel": 1,
+    // "editor.lineNumbers": "relative",
+    "go.toolsManagement.autoUpdate": true,
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": { // shows *.feature.cs files as nested items
+        "*.feature": "${capture}.feature.cs"
+    },
+    "files.exclude": {
+        "**/obj/": true,
+        "**/bin/": true,
+        "allure-results/": true
+    },
+    // Official Cucumber extension
+    "cucumber.glue": [
+        "**/Steps/**/*.cs"
+    ],
+    "cucumber.features": [
+        "**/Features/**/*.feature"
+    ],
+    // Cucumber (Gherkin) Full Support extension
+    "cucumberautocomplete.steps": [
+        "test/**/Steps/**/*.cs"
+    ],
+    "cucumberautocomplete.syncfeatures": "test/**/Features/**/*.feature",
+    "cucumberautocomplete.strictGherkinCompletion": false,
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    "editor.cursorSurroundingLines": 3,
+    "editor.accessibilitySupport": "off",
+    "cursor-retrieval.canAttemptGithubLogin": false,
+    "zenMode.fullScreen": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1,
+        "vscodevim.vim": 1
+    },
+    "vscode-neovim.compositeKeys": {
+        "jk": {
+            "command": "vscode-neovim.escape"
+        }
+    },
+    "search.mode": "reuseEditor",
+    "security.promptForLocalFileProtocolHandling": false,
+    "problems.sortOrder": "position",
+    // "workbench.colorTheme": "One Dark Pro",
+    "workbench.activityBar.orientation": "vertical", // To fix navigation in file tree with vscode-neovim in cursor
+    "zenMode.centerLayout": false,
+    "zenMode.hideLineNumbers": false,
+    "cursor.composer.shouldChimeAfterChatFinishes": true,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "dotrush.debugger.automaticLaunchSettingsLoad": true,
+    "chat.agent.enabled": true,
+    "github.copilot.nextEditSuggestions.enabled": true,
+    // "workbench.colorTheme": "Tokyo Night",
+    "windsurf.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
+    "windsurf.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
+    "[csharp]": {
+        "editor.defaultFormatter": "JetBrains.resharper-code"
+    },
+    "cursor.cpp.enablePartialAccepts": true,
+    // "window.customTitleBarVisibility": "never",
+    // "window.titleBarStyle": "native",
+    // "window.density.editorTabHeight": "compact",
+    "editor.minimap.enabled": false,
+    // "editor.smoothScrolling": true
+    "terminal.integrated.allowedLinkSchemes": [
+        "file",
+        "http",
+        "https",
+        "mailto",
+        "vscode",
+        "vscode-insiders",
+        "vscode-next",
+        "windsurf"
+    ],
+    "editor.formatOnType": true, // recommended by ReSharper
+    "window.commandCenter": false,
+    "git.decorations.enabled": false,
+    "dotrush.roslyn.analyzerDiagnosticsScope": "None",
+    "dotrush.roslyn.compilerDiagnosticsScope": "None",
+    "window.autoDetectColorScheme": true,
+    "antigravity.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
+    "antigravity.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
+    "json.schemaDownload.enable": true,
+    "geminicodeassist.inlineSuggestions.suggestionSpeed": "Fast",
+    "geminicodeassist.inlineSuggestions.nextEditPredictions": true,
+    "http.systemCertificatesNode": true,
+    "vs-kubernetes": {
+        "vscode-kubernetes.helm-path-mac": "~/.vs-kubernetes/tools/helm/darwin-arm64/helm",
+        "vscode-kubernetes.minikube-path-mac": "~/.vs-kubernetes/tools/minikube/darwin-arm64/minikube"
+    },
+    "resharper.region.region": "Europe",
+    "resharper.dataSharing.allowDataSharing": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "yaml.disableSchemaDetection": [],
+    "chat.viewSessions.orientation": "stacked",
+    "docker.extension.enableComposeLanguageServer": false
+}

@@ -1,0 +1,10 @@
+# Zsh history file
+.zsh_history
+
+# Zsh completion cache files
+.zcompdump
+.zcompdump-*
+.zcompdump-*.zwc
+
+# Zsh session data
+.zsh_sessions/

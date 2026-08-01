@@ -1,0 +1,142 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent_servers": {
+    "opencode": {
+      "type": "registry"
+    }
+  },
+  "cli_default_open_behavior": "new_window",
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true
+  },
+  // "features": {
+  //   "edit_prediction_provider": "zed"
+  // },
+  "edit_predictions": {
+    "ollama": {
+      "prompt_format": "qwen",
+      "model": "maternion/sweep-next-edit-1.5B:latest"
+    },
+    "provider": "zed",
+    "mode": "eager"
+  },
+  "project_panel": {
+    "dock": "left",
+    "hide_gitignore": false
+  },
+  // "edit_predictions": {
+  //   "mode": "eager",
+  //   "copilot": {
+  //     "proxy": null,
+  //     "proxy_no_verify": null
+  //   },
+  //   "enabled_in_text_threads": false
+  // },
+  // "features": {
+  //   // "edit_prediction_provider": "copilot"
+  // },
+  // "agent": {
+  //   "inline_assistant_model": {
+  //     "provider": "copilot_chat",
+  //     "model": "gpt-4.1"
+  //   },
+  //   "model_parameters": [],
+  //   "default_model": {
+  //     "provider": "copilot_chat",
+  //     "model": "claude-3.5-sonnet"
+  //   }
+  // },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "toolbar": {
+    "selections_menu": false,
+    // "quick_actions": false
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  // "wrap_guides": [120], // Set by language better?
+  "show_wrap_guides": true,
+  "vim_mode": true,
+  "relative_line_numbers": "enabled",
+  "ensure_final_newline_on_save": false,
+  "format_on_save": "off",
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha - No Italics"
+  },
+  "languages": {
+    "CSharp": {
+      "wrap_guides": [120]
+      // "formatter": [{ "language_server": { "name": "dotrush" } }]
+    }
+  },
+  "file_types": {
+    "XML": ["*.csproj", "*.props"]
+  },
+  "lsp": {
+    // "dotrush": {
+    //   "settings": {
+    //     "dotrush": {
+    //       "roslyn": {
+    //         "ShowItemsFromUnimportedNamespaces": true,
+    //         "TargetTypedCompletionFilter": true,
+    //         "TriggerCompletionOnSpace": true,
+    //         "SkipUnrecognizedProjects": true, // Mandatory when having .dcproj project
+    //         "LoadMetadataForReferencedProjects": false,
+    //         "RestoreProjectsBeforeLoading": true,
+    //         "CompileProjectsAfterLoading": true,
+    //         // "AnalyzerDiagnosticsScope": "Solution", // testing
+    //         // "CompilerDiagnosticsScope": "Solution",
+    //         "AnalyzerAssemblies": [
+    //           "~/.dotnet-analyzers/sonaranalyzer.csharp/analyzers/SonarAnalyzer.CSharp.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator.CSharp.Analyzers.CodeFixes.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator.CSharp.Analyzers.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator_Analyzers_Roslynator.Common.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator_Analyzers_Roslynator.Core.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator_Analyzers_Roslynator.CSharp.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator_Analyzers_Roslynator.CSharp.Workspaces.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator_Analyzers_Roslynator.Workspaces.Common.dll",
+    //           "~/.dotnet-analyzers/roslynator.analyzers/analyzers/dotnet/roslyn4.7/cs/Roslynator_Analyzers_Roslynator.Workspaces.Core.dll"
+    //         ]
+    //       }
+    //     }
+    //   }
+    // },
+    // "omnisharp": {
+    //   "binary": {
+    //     "path": "csharp-language-server" // https://github.com/SofusA/csharp-language-server
+    //   }
+    // },
+    "cucumber": {
+      "settings": {
+        "glue": ["**/Steps/**/*.cs"],
+        "features": ["**/Features/**/*.feature"]
+      }
+    }
+  }
+}

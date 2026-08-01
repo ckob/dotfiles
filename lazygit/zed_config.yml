@@ -1,0 +1,6 @@
+os:
+  editPreset: 'zed'
+promptToReturnFromSubprocess: false
+git:
+  pagers:
+    - pager: delta $(defaults read -g AppleInterfaceStyle >/dev/null 2>&1 && echo --dark || echo --light) --paging=never

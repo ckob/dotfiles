@@ -1,0 +1,75 @@
+" Activate 'IdeaVim: Track Action IDs' to search for actions 
+" Ideas in: https://github.com/JetBrains/ideavim/discussions/303?sort=top#discussioncomment-7664118
+
+source ~/.lazy-idea/lazy-idea.vim
+
+set NERDTree
+
+"map <leader>e :NERDTreeFind<CR>
+map <leader>ee :NERDTreeToggle<CR>
+map <leader>ef :NERDTreeFind<CR>
+
+set relativenumber number
+set ignorecase smartcase
+set ideajoin
+set showcmd
+set incsearch
+set commentary
+set vim-paragraph-motion
+
+set clipboard+=unnamed ideaput
+
+nmap ]E <Action>(ReSharperGotoNextErrorInSolution)
+nmap [E <Action>(ReSharperGotoPrevErrorInSolution)
+
+" Lazyvim with https://plugins.jetbrains.com/plugin/26950-tuilaunch
+" nmap <leader>gg <Action>(TUILauncher.lazygitrider)
+
+"nnoremap <leader>gg <Action>(Lazygit.Toggle)
+
+"nmap <leader>gg <Action>(Lazygit.Toggle)
+
+if exists('g:loaded_lazygit')
+    nmap <leader>gg <Action>(Lazygit.Toggle)
+else
+    nmap <leader>gg <Action>(ActivateCommitToolWindow)
+endif
+
+" Projects
+nmap <leader>fp <Action>(RecentProjectListGroup)
+
+" Code Action
+map <leader>ca <Action>(ShowIntentionActions)
+
+"nmap <leader>ee <Action>(ActivateProjectToolWindow)
+"map <leader>ef <Action>(SelectInProjectView)
+
+map <leader>fs <Action>(FindInPath)
+
+nmap <leader>ff <Action>(Television.Channel.Files)
+nmap <leader>fs <Action>(Television.Channel.Text)
+
+"map <leader>ff <Action>(com.fuzzyfilesearch.SearchAllFiles)
+
+
+nmap <leader>cf <Action>(ReformatCode)
+vmap <leader>cf <Action>(ReformatCode)
+
+" Completion
+imap <C-y> <Action>(EditorChooseLookupItem)
+
+" Open file in cursor editor (with Switch2Cursor plugin)
+nmap <leader>oc <Action>(OpenFileInCursor)
+
+nmap <C-w>q <Action>(CloseAllEditors)
+
+imap jk <Esc>
+
+" highlight yank (bundle plugin)
+set highlightedyank
+let g:highlightedyank_highlight_duration = "500"
+let g:highlightedyank_highlight_color = "rgba(57, 197, 187, 155)"
+
+" Sweep AI Tab completion mapping
+"map <Tab> :action dev.sweep.assistant.autocomplete.edit.AcceptEditCompletionAction<CR>
+map <C-F> :action dev.sweep.assistant.autocomplete.edit.AcceptEditCompletionAction<CR>

@@ -1,0 +1,10 @@
+# Used by: https://github.com/tom-pollak/lazygit-vscode
+os:
+  edit:              "rider {{filename}}"
+  editAtLine:        "rider --line {{line}} {{filename}}"
+  editAtLineAndWait: "rider --line {{line}} --wait {{filename}}"
+  openDirInEditor:   "rider {{dir}}"
+promptToReturnFromSubprocess: false
+git:
+  pagers:
+    - pager: delta $(defaults read -g AppleInterfaceStyle >/dev/null 2>&1 && echo --dark || echo --light) --paging=never

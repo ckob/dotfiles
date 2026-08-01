@@ -1,0 +1,369 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  // Terminal
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-/": "workspace::ToggleBottomDock"
+    }
+  },
+  // Window's navigation
+  {
+    "context": "Dock || Terminal || Editor",
+    "bindings": {
+      // Window's motions
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "q": "git_panel::Close"
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-\\": "workspace::ToggleRightDock",
+      "cmd-k": "workspace::ToggleRightDock"
+    }
+  },
+  // File panel (netrw)
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      // Close project panel as project file panel on the right
+      "q": "workspace::ToggleLeftDock",
+      "space e e": "workspace::ToggleLeftDock",
+      ":": "command_palette::Toggle",
+      "%": "project_panel::NewFile",
+      "/": "project_panel::NewSearchInDirectory",
+      "enter": "project_panel::OpenPermanent",
+      "escape": "project_panel::ToggleFocus",
+      "h": "project_panel::CollapseSelectedEntry",
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "l": "project_panel::ExpandSelectedEntry",
+      "o": "project_panel::OpenPermanent",
+      "shift-d": "project_panel::Delete",
+      "shift-r": "project_panel::Rename",
+      "t": "project_panel::OpenPermanent",
+      "v": "project_panel::OpenPermanent",
+      "shift-g": "menu::SelectLast",
+      "g g": "menu::SelectFirst",
+      "-": "project_panel::SelectParent",
+      "ctrl-6": "pane::AlternateFile",
+      "ctrl-d": ["workspace::SendKeystrokes", "j j j j j j j j j j"],
+      "ctrl-u": ["workspace::SendKeystrokes", "k k k k k k k k k k"],
+      "] g": "project_panel::SelectNextGitEntry",
+      "[ g": "project_panel::SelectPrevGitEntry",
+      "] d": "project_panel::SelectNextDiagnostic",
+      "[ d": "project_panel::SelectPrevDiagnostic"
+    }
+  },
+  // Empty pane, set of keybindings that are available when there is no active editor
+  {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      // Open file finder
+      "space space": "file_finder::Toggle",
+      "space f f": "file_finder::Toggle",
+      // New file
+      "space f n": "workspace::NewFile",
+      // Open recent project
+      "space f p": "projects::OpenRecent",
+      // Search in all the files
+      "space f s": "workspace::NewSearch",
+      // Quit zed
+      "space q q": "zed::Quit"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space l": "zed::Extensions",
+      // Refactoring
+      "space c r ": "editor::Rename",
+      // Chat with AI
+      "space a i c": "agent::ToggleFocus", // [A][I][C]hat
+      "ctrl-\\": "workspace::ToggleRightDock",
+      "cmd-k": "workspace::ToggleRightDock",
+      "space a i i": "assistant::InlineAssist", // [A][I][I]nline chat
+      "cmd-l": "assistant::InlineAssist",
+      "space a t": "workspace::ToggleRightDock",
+      "space . .": [
+        "task::Spawn",
+        {
+          "task_name": "lazydotnet",
+          "reveal_target": "center"
+        }
+      ],
+      // Git
+      "space g g": [
+        "task::Spawn",
+        {
+          "task_name": "lazygit",
+          "reveal_target": "center"
+        }
+      ],
+      "space g h d": "editor::ExpandAllDiffHunks",
+      "space g h D": "git::Diff",
+      "space g h r": "git::Restore",
+      "space g h R": "git::RestoreFile",
+      // Open recent project
+      "space f p": "projects::OpenRecent",
+      // Search word under cursor in current pane
+      "space s w": "buffer_search::Deploy",
+      // Search word under cursor in all panes
+      "space s W": "pane::DeploySearch",
+      // Tab things. Almost as good as harpoon.
+      "space 1": ["pane::ActivateItem", 0],
+      "space 2": ["pane::ActivateItem", 1],
+      "space 3": ["pane::ActivateItem", 2],
+      "space 4": ["pane::ActivateItem", 3],
+      "space 5": ["pane::ActivateItem", 4],
+      "space 6": ["pane::ActivateItem", 5],
+      "space 7": ["pane::ActivateItem", 6],
+      "space 8": ["pane::ActivateItem", 7],
+      "space 9": ["pane::ActivateItem", 8],
+      "space 0": "pane::ActivateLastItem",
+      "] b": "pane::ActivateNextItem",
+      "L": "pane::ActivateNextItem",
+      "[ b": "pane::ActivatePreviousItem",
+      "H": "pane::ActivatePreviousItem",
+      "space ,": "tab_switcher::Toggle",
+      // Jump to the previous location
+      "space b b": "pane::AlternateFile",
+      // Close buffer
+      "space b d": "pane::CloseActiveItem",
+      // Close other buffers
+      "space b o": "pane::CloseOtherItems",
+      // Search
+      // "space f s": "workspace::NewSearch",
+      // Git
+      "space g b": "git::Blame",
+      // LSP & Code actions
+      "space c a": "editor::ToggleCodeActions",
+      "space s d": "diagnostics::Deploy",
+      "space s s": "outline::Toggle",
+      // Format
+      "space c f": "editor::Format",
+      // File explorer
+      "space e e": "workspace::ToggleLeftDock",
+      "space e f": "pane::RevealInProjectPanel",
+      // Telescope
+      // "space f f": "file_finder::Toggle",
+      "space f f": ["task::Spawn", { "task_name": "file_finder" }],
+      "space f s": ["task::Spawn", { "task_name": "fulltext_search" }],
+      "space space": "file_finder::Toggle",
+      "ctrl-w q": "pane::CloseAllItems",
+      // Jump to hunks
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      "] g": "editor::GoToHunk",
+      "[ g": "editor::GoToPreviousHunk",
+      // Jump to diagnostic
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+      "] e": [
+        "editor::GoToDiagnostic",
+        {
+          "severity": {
+            "min": "error",
+            "max": "error"
+          }
+        }
+      ],
+      "[ e": [
+        "editor::GoToPreviousDiagnostic",
+        {
+          "severity": {
+            "min": "error",
+            "max": "error"
+          }
+        }
+      ],
+      "] w": [
+        "editor::GoToDiagnostic",
+        {
+          "severity": {
+            "min": "warning",
+            "max": "error"
+          }
+        }
+      ],
+      "[ w": [
+        "editor::GoToPreviousDiagnostic",
+        {
+          "severity": {
+            "min": "warning",
+            "max": "error"
+          }
+        }
+      ],
+      // Dotnet
+      "space o r": [
+        "task::Spawn",
+        {
+          "task_name": "open in rider",
+          "reevaluate_context": true
+        }
+      ],
+      "space t t": [
+        "task::Spawn",
+        {
+          "task_name": "dotnet: test nearest",
+          "reevaluate_context": true
+        }
+      ],
+      // re-run last nearest execution
+      "space t l": [
+        "task::Spawn",
+        {
+          "task_name": "dotnet: test nearest",
+          "reevaluate_context": false
+        }
+      ]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      // Line's Motions
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+
+      "space c f": "editor::FormatSelections",
+      ">": ["workspace::SendKeystrokes", "> g v"],
+      "<": ["workspace::SendKeystrokes", "< g v"]
+    }
+  },
+  // Center the cursor on the screen when scrolling and find all references
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-d z z"],
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-u z z"],
+      "n": ["workspace::SendKeystrokes", "n z z z v"],
+      "shift-n": ["workspace::SendKeystrokes", "shift-n z z z v"],
+      "shift-g": ["workspace::SendKeystrokes", "shift-g z z"]
+      // "g r": "editor::FindAllReferences"
+    }
+  },
+  {
+    "context": "vim_operator == d",
+    "bindings": {
+      "o": "editor::ExpandAllDiffHunks",
+      "r": "git::Restore"
+    }
+  },
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": "vim::PushSneak",
+      "S": "vim::PushSneakBackward"
+    }
+  },
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
+    "bindings": {
+      "b": "vim::AnyBrackets"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": ["workspace::SendKeystrokes", "escape"],
+      "k j": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "use_key_equivalents": true,
+    "bindings": {
+      // "enter": "editor::ConfirmCompletion",
+      "enter": null,
+      "ctrl-y": "editor::ConfirmCompletion",
+
+      // "shift-enter": "editor::ConfirmCompletionReplace",
+
+      // "tab": "editor::ComposeCompletion"
+      "tab": null,
+      "ctrl-shift-y": "editor::ComposeCompletion"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      // Disable default map (select right text)
+      "ctrl-shift-f": null
+    }
+  },
+  // {
+  //   "context": "(Editor && edit_prediction)",
+  //   "bindings": {
+  //     "ctrl-shift-f": "editor::AcceptEditPrediction",
+  //     "tab": null,
+  //     "alt-tab": null
+  //   }
+  // },
+  // {
+  //   "context": "Editor && mode == full && edit_prediction",
+  //   // "use_key_equivalents": true,
+  //   "bindings": {
+  //     "ctrl-shift-f": "editor::NextEditPrediction",
+  //     "tab": null,
+  //     "alt-tab": null
+  //     // "alt-shift-tab": "editor::PreviousEditPrediction"
+  //   }
+  // },
+  // {
+  //   "context": "Editor && !edit_prediction",
+  //   // "use_key_equivalents": true,
+  //   "bindings": {
+  //     "alt-tab": null,
+  //     "ctrl-shift-f": "editor::ShowEditPrediction"
+  //   }
+  // }
+  // {
+  //   "context": "(Editor && edit_prediction)",
+  //   "bindings": {
+  //     "ctrl-shift-f": "editor::AcceptEditPrediction"
+  //   }
+  // }
+  // {
+  //   "context": "Editor && edit_prediction",
+  //   "bindings": {
+  //     // Here we also allow `alt-enter` to accept the prediction
+  //     "ctrl-shift-f": "editor::AcceptEditPrediction"
+  //   }
+  // },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "ctrl-shift-f": "editor::AcceptEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && (edit_prediction && (showing_completions || in_leading_whitespace))",
+    "bindings": {
+      "ctrl-shift-f": "editor::AcceptEditPrediction"
+    }
+  }
+]

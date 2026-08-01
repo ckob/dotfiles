@@ -1,0 +1,324 @@
+// Place your key bindings in this file to override the defaults
+[
+    // Navigate inside a hover opened with (g,h) (editor.action.showDefinitionPreviewHover)
+    {
+        "key": "h",
+        "command": "editor.action.scrollLeftHover",
+        "when": "editorHoverFocused"
+    },
+    {
+        "key": "j",
+        "command": "editor.action.scrollDownHover",
+        "when": "editorHoverFocused"
+    },
+    {
+        "key": "k",
+        "command": "editor.action.scrollUpHover",
+        "when": "editorHoverFocused"
+    },
+    {
+        "key": "l",
+        "command": "editor.action.scrollRightHover",
+        "when": "editorHoverFocused"
+    },
+    // {
+    //   "key": "cmd+i",
+    //   "command": "composerMode.agent"
+    // },
+    {
+        "key": "cmd+l",
+        "command": "workbench.panel.chat",
+        "when": "workbench.panel.chat.view.copilot.active"
+    },
+    // Remap window navigation additionally to ctrl-w+direction provided by vscode-neovim
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
+    },
+    // Improve scrolling with vscode-neovim https://github.com/vscode-neovim/vscode-neovim/issues/983#issuecomment-21834047426
+    {
+        "key": "ctrl+u",
+        "command": "-vscode-neovim.ctrl-u",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.u && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "-vscode-neovim.ctrl-d",
+        "when": "editorTextFocus && neovim.ctrlKeysNormal.d && neovim.init && neovim.mode != 'insert' && editorLangId not in 'neovim.editorLangIdExclusions'"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "runCommands",
+        "when": "editorTextFocus && !editorHasSelection",
+        "args": {
+            "commands": [
+                {
+                    "command": "editorScroll",
+                    "args": {
+                        "to": "up",
+                        "by": "line",
+                        "value": 20
+                    }
+                },
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "up",
+                        "by": "line",
+                        "value": 20
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "key": "ctrl+u",
+        "command": "runCommands",
+        "when": "editorTextFocus && editorHasSelection",
+        "args": {
+            "commands": [
+                {
+                    "command": "editorScroll",
+                    "args": {
+                        "to": "up",
+                        "by": "line",
+                        "value": 20
+                    }
+                },
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "up",
+                        "by": "line",
+                        "value": 20,
+                        "select": true
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "key": "ctrl+d",
+        "command": "runCommands",
+        "when": "editorTextFocus && !editorHasSelection",
+        "args": {
+            "commands": [
+                {
+                    "command": "editorScroll",
+                    "args": {
+                        "to": "down",
+                        "by": "line",
+                        "value": 20
+                    }
+                },
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "down",
+                        "by": "line",
+                        "value": 20
+                    }
+                }
+            ]
+        }
+    },
+    {
+        "key": "ctrl+d",
+        "command": "runCommands",
+        "when": "editorTextFocus && editorHasSelection",
+        "args": {
+            "commands": [
+                {
+                    "command": "editorScroll",
+                    "args": {
+                        "to": "down",
+                        "by": "line",
+                        "value": 20
+                    }
+                },
+                {
+                    "command": "cursorMove",
+                    "args": {
+                        "to": "down",
+                        "by": "line",
+                        "value": 20,
+                        "select": true
+                    }
+                }
+            ]
+        }
+    },
+    // Remap Github copilot autocompletion to accept next word or line
+    // {
+    //     "key": "ctrl+shift+j",
+    //     "command": "editor.action.inlineSuggest.jump",
+    //     "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-editor.action.inlineSuggest.jump",
+    //     "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "ctrl+shift+f",
+    //     "command": "editor.action.inlineSuggest.commit",
+    //     "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-editor.action.inlineSuggest.commit",
+    //     "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "ctrl+shift+f",
+    //     "command": "editor.action.inlineSuggest.commit",
+    //     "when": "inInlineEditsPreviewEditor"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-editor.action.inlineSuggest.commit",
+    //     "when": "inInlineEditsPreviewEditor"
+    // },
+    // {
+    //     "key": "ctrl+shift+]",
+    //     "command": "editor.action.inlineSuggest.showNext",
+    //     "when": "inlineSuggestionVisible && !editorReadonly"
+    // },
+    // {
+    //     "key": "alt+]",
+    //     "command": "-editor.action.inlineSuggest.showNext",
+    //     "when": "inlineSuggestionVisible && !editorReadonly"
+    // },
+    // {
+    //     "key": "ctrl+shift+]",
+    //     "command": "editor.action.inlineSuggest.showPrevious",
+    //     "when": "inlineSuggestionVisible && !editorReadonly"
+    // },
+    // {
+    //     "key": "alt+[",
+    //     "command": "-editor.action.inlineSuggest.showPrevious",
+    //     "when": "inlineSuggestionVisible && !editorReadonly"
+    // },
+    // {
+    //     "key": "ctrl+shift+]",
+    //     "command": "editor.action.inlineSuggest.trigger",
+    //     "when": "editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+    // },
+    // {
+    //     "key": "alt+\\",
+    //     "command": "-editor.action.inlineSuggest.trigger",
+    //     "when": "editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+    // },
+    // Added by gemini cli in the vscode terminal to enable multi-line input
+    {
+        "key": "ctrl+enter",
+        "command": "workbench.action.terminal.sendSequence",
+        "when": "terminalFocus",
+        "args": {
+            "text": "\\\r\n"
+        }
+    },
+    {
+        "key": "shift+enter",
+        "command": "workbench.action.terminal.sendSequence",
+        "when": "terminalFocus",
+        "args": {
+            "text": "\\\r\n"
+        }
+    },
+    // {
+    //     "key": "enter",
+    //     "command": "-acceptSelectedSuggestion",
+    //     "when": "acceptSuggestionOnEnter && suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && suggestionMakesTextEdit && textInputFocus"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-acceptSelectedSuggestion",
+    //     "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    // },
+    {
+        "key": "ctrl+y",
+        "command": "acceptSelectedSuggestion",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-television.ToggleFileFinder"
+    },
+    {
+        "key": "ctrl+shift+f",
+        "command": "-television.ToggleTextFinder"
+    },
+    {
+        "key": "space f f",
+        "command": "television.ToggleFileFinder",
+        "when": "!inputFocus"
+    },
+    {
+        "key": "space f s",
+        "command": "television.ToggleTextFinder",
+        "when": "!inputFocus"
+    },
+    // Removed temporary because it conflicts with vscode
+    // {
+    //     "key": "ctrl+shift+f",
+    //     "command": "antigravity.prioritized.supercompleteAccept",
+    //     "when": "antigravity.customCompletionShown && editorTextFocus || editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible || editorTextFocus && inlineSuggestionVisible && neovim.init && neovim.mode == 'normal' || editorTextFocus && inlineSuggestionVisible && vim.active && vim.mode == 'Normal'"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-antigravity.prioritized.supercompleteAccept",
+    //     "when": "antigravity.customCompletionShown && editorTextFocus || editorTextFocus && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible || editorTextFocus && inlineSuggestionVisible && neovim.init && neovim.mode == 'normal' || editorTextFocus && inlineSuggestionVisible && vim.active && vim.mode == 'Normal'"
+    // },
+    // {
+    //     "key": "ctrl+shift+f",
+    //     "command": "insertNextSuggestion",
+    //     "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-insertNextSuggestion",
+    //     "when": "hasOtherSuggestions && textInputFocus && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+    // },
+    // {
+    //     "key": "ctrl+shift+f",
+    //     "command": "editor.action.inlineSuggest.commit",
+    //     "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // },
+    // {
+    //     "key": "tab",
+    //     "command": "-editor.action.inlineSuggest.commit",
+    //     "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editor.hasSelection && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+    // }
+    /*       {
+        "key": "tab",
+        "command": "-acceptSelectedSuggestion",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+      } */
+
+//    {
+//         "key": "ctrl+shift+.", 
+//         "command": "workbench.action.terminal.newWithProfile",
+//         "args": {
+//             "profileName": "Lazydotnet",
+//             "location": "editor"
+//         }
+//     }
+    {
+        "key": "ctrl+shift+.",
+        "command": "workbench.action.tasks.runTask",
+        "args": "lazydotnet"
+    }
+]
