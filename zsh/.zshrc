@@ -77,12 +77,14 @@ plugins=(
     wd
     nvm
     thefuck
-    zsh-gcc
 )
 
 # --- Completions (must be loaded *before* sourcing OMZ) ---
 # Docker Desktop completions
 fpath=("$HOME/.docker/completions" $fpath)
+
+# Source machine-specific Zsh overrides & plugins (before OMZ)
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
 # Source Oh My Zsh (This will run compinit)
 source $ZSH/oh-my-zsh.sh
@@ -164,9 +166,6 @@ alias agy-yolo='agy --dangerously-skip-permissions'
 # ------------------------------------------------------------------------------
 # Secrets & Local Config (Untracked)
 # ------------------------------------------------------------------------------
-
-# Machine-specific Zsh overrides (aliases, local tools, custom settings)
-[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
 # Local secrets & API tokens
 [ -f "$HOME/.secrets" ] && source "$HOME/.secrets"
