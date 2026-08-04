@@ -49,32 +49,32 @@ end
 -- =====================================================================
 
 local appShortcuts                 = {
-  P = "1Password",
-  B = "Brave Browser",
-  G = "Gemini",
-  T = "Ghostty",
-  C = "Calendar",
-  X = "Google Chat",
-  M = "Gmail",
-  V = "Google Meet",
-  N = "Obsidian",
-  R = "Rider",
-  S = "Spotify",
-  E = "Visual Studio Code",
-  Z = "Zed"
+  { key = "B", mnemonic = "[B]rowser",   app = "Brave Browser" },
+  { key = "C", mnemonic = "[C]alendar",  app = "Calendar" },
+  { key = "E", mnemonic = "[E]ditor",    app = "Visual Studio Code" },
+  { key = "G", mnemonic = "[G]emini",    app = "Gemini" },
+  { key = "M", mnemonic = "[M]ail",      app = "Gmail" },
+  { key = "N", mnemonic = "[N]otes",     app = "Obsidian" },
+  { key = "P", mnemonic = "[P]asswords", app = "1Password" },
+  { key = "R", mnemonic = "[R]ider",     app = "Rider" },
+  { key = "S", mnemonic = "[S]potify",   app = "Spotify" },
+  { key = "T", mnemonic = "[T]erminal",  app = "Ghostty" },
+  { key = "V", mnemonic = "[V]ideo",     app = "Google Meet" },
+  { key = "X", mnemonic = "[X]at",       app = "Google Chat" },
+  { key = "Z", mnemonic = "[Z]ed",       app = "Zed" }
 }
 
-for key, appName in pairs(appShortcuts) do
-  hs.hotkey.bind(hyper, key, function()
+for _, item in ipairs(appShortcuts) do
+  hs.hotkey.bind(hyper, item.key, function()
     -- Auto-dismiss the help cheat sheet if it's open!
     _G.closeHelp()
 
     local frontmostApp = hs.application.frontmostApplication()
 
-    if frontmostApp and frontmostApp:name() == appName then
+    if frontmostApp and frontmostApp:name() == item.app then
       frontmostApp:hide()
     else
-      hs.application.launchOrFocus(appName)
+      hs.application.launchOrFocus(item.app)
     end
   end)
 end
@@ -218,20 +218,18 @@ hs.alert.show("Hammerspoon Config Loaded", 1)
 -- =====================================================================
 
 local appHelpText = "🚀 App Shortcuts\n" ..
-    "━━━━━━━━━━━━━━━━━\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
 
-local sortedKeys = {}
-for key in pairs(appShortcuts) do table.insert(sortedKeys, key) end
-table.sort(sortedKeys)
-
-for _, key in ipairs(sortedKeys) do
-  appHelpText = appHelpText .. key .. "  →  " .. appShortcuts[key] .. "\n"
+for _, item in ipairs(appShortcuts) do
+  appHelpText = appHelpText .. string.format("%-12s →  %s\n", item.mnemonic, item.app)
 end
-appHelpText = appHelpText .. "A  →  [Gemini mini chat]\n"
-appHelpText = appHelpText .. "D  →  [Homerow Scroll]\n"
-appHelpText = appHelpText .. "F  →  [Homerow Find]\n"
-appHelpText = appHelpText .. "I  →  [Insert Mode]\n"
-appHelpText = appHelpText .. "W  →  [Window Mode]"
+
+appHelpText = appHelpText .. "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+appHelpText = appHelpText .. string.format("%-12s →  %s\n", "[A]I", "Gemini Mini Chat")
+appHelpText = appHelpText .. string.format("%-12s →  %s\n", "[D]own", "Homerow Scroll")
+appHelpText = appHelpText .. string.format("%-12s →  %s\n", "[F]ind", "Homerow Find")
+appHelpText = appHelpText .. string.format("%-12s →  %s\n", "[I]nsert", "Insert Mode")
+appHelpText = appHelpText .. string.format("%-12s →  %s", "[W]indow", "Window Mode")
 
 hs.hotkey.bind(hyper, 'h', function()
   if _G.helpState.isVisible then
