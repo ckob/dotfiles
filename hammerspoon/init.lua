@@ -56,6 +56,7 @@ local appShortcuts                 = {
   C = "Calendar",
   X = "Google Chat",
   M = "Gmail",
+  V = "Google Meet",
   N = "Obsidian",
   R = "Rider",
   S = "Spotify",
