@@ -5,9 +5,9 @@
 	pager = delta
 [init]
 	defaultBranch = main
-
-[includeIf "gitdir:~/repos/personal/"]
-	path = ~/.config/git/personal.conf
+[user]
+	name = Charly Koch
+	email = charlykoch@gmail.com
 
 [includeIf "gitdir:~/repos/work/"]
 	path = ~/.config/git/work.conf
