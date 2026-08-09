@@ -42,8 +42,6 @@ safe_link "$DIR/zed/tasks.jsonc" ~/.config/zed/tasks.json
 safe_link "$DIR/zed/scripts" ~/.config/zed/scripts
 safe_link "$DIR/karabiner" ~/.config/karabiner
 safe_link "$DIR/ghostty" ~/.config/ghostty
-safe_link "$DIR/zellij" ~/.config/zellij
-safe_link "$DIR/tmux" ~/.config/tmux
 safe_link "$DIR/television" ~/.config/television
 safe_link "$DIR/fd" ~/.config/fd
 safe_link "$DIR/lazygit" ~/.config/lazygit
