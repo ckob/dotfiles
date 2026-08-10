@@ -4,6 +4,9 @@ return {
   ---@module 'obsidian'
   ---@type obsidian.config
   opts = {
+    ui = {
+      enable = false, -- Disable obsidian UI rendering to let render-markdown.nvim handle markdown rendering without conflicts
+    },
     legacy_commands = false, -- this will be removed in 4.0.0
     notes_subdir = "0 Inbox",
     new_notes_location = "notes_subdir",
