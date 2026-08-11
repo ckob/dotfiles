@@ -1,6 +1,6 @@
 tap "ankitpokhrel/jira-cli"
 tap "anomalyco/tap", "https://github.com/anomalyco/homebrew-tap.git"
-tap "azure/kubelogin", "https://github.com/Azure/homebrew-kubelogin"
+tap "azure/kubelogin"
 tap "fcanas/tap"
 tap "grafana/grafana"
 tap "jesseduffield/lazygit"
@@ -79,13 +79,16 @@ brew "openjdk@17"
 brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-# Python interface to Tcl/Tk
+# Command-line shell and scripting language
 brew "powershell"
+# Python interface to Tcl/Tk
 brew "python-tk@3.13"
 # Persistent key-value database, with built-in net interface
 brew "redis"
 # SVG rendering tool and library
 brew "resvg"
+# Safe, concurrent, practical language
+brew "rust"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
 # Modernized, complete, self-contained TeX/LaTeX engine
@@ -110,34 +113,39 @@ brew "zoxide"
 brew "zsh-vi-mode"
 # Command-line tool for fiddling with display mirroring: on/off/toggle
 brew "fcanas/tap/mirror-displays", trusted: true
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# Web browser focusing on privacy
+cask "brave-browser"
 # Open source IDE for exploring and testing APIs
 cask "bruno"
 cask "font-hack-nerd-font"
 cask "font-jetbrains-mono"
 cask "font-symbols-only-nerd-font"
-# Kubernetes IDE
-# cask "freelens"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
+# Client for the Google Drive storage service
+cask "google-drive"
+# Native desktop AI assistant from Google
+cask "google-gemini"
 # Desktop automation application
 cask "hammerspoon"
 # Keyboard customiser
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
-# Browse, manage, inspect containers and images
-# cask "podman-desktop"
 # Control your tools with a few keystrokes
 cask "raycast"
+# Open-source code editor
+cask "visual-studio-code"
 vscode "alexkrechik.cucumberautocomplete"
 vscode "alexpasmantier.television"
 vscode "asvetliakov.vscode-neovim"
 vscode "ckob.lazydotnet"
-vscode "cucumberopen.cucumber-official"
 vscode "docker.docker"
 vscode "enkia.tokyo-night"
 vscode "google.gemini-cli-vscode-ide-companion"
