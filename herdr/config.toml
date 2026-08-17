@@ -20,6 +20,7 @@ agent_panel_sort = "priority"
 prefix = "ctrl+space"
 navigate_workspace_up = "ctrl+p"
 navigate_workspace_down = "ctrl+n"
+last_pane = "prefix+space"
 
 [experimental]
 kitty_graphics = true
