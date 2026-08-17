@@ -142,6 +142,7 @@ cask "keycastr"
 cask "raycast"
 # Open-source code editor
 cask "visual-studio-code"
+cask "zed"
 vscode "alexkrechik.cucumberautocomplete"
 vscode "alexpasmantier.television"
 vscode "asvetliakov.vscode-neovim"
