@@ -17,13 +17,18 @@ return {
       folder = "templates",
       date_format = "%Y-%m-%d",
       time_format = "%H:%M",
-      substitutions = {}
+      substitutions = {},
     },
     workspaces = {
       {
         name = "personal",
         path = "~/ObsidianNotes",
-      }
+      },
+    },
+    checkbox = {
+      enabled = true,
+      create_new = true,
+      order = { " ", "x", "" },
     },
     -- Optional, customize how note IDs are generated given an optional title.
     ---@param title string|?
