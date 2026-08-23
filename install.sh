@@ -70,4 +70,13 @@ safe_link "$DIR/vscode/keybindings.jsonc" ~/Library/Application\ Support/Cursor/
 safe_link "$DIR/vscode/keybindings.jsonc" ~/Library/Application\ Support/Windsurf/User/keybindings.json
 safe_link "$DIR/vscode/keybindings.jsonc" ~/Library/Application\ Support/Antigravity/User/keybindings.json
 
+# Set up background cron jobs
+echo "⏰ Setting up Obsidian background sync..."
+SYNC_TAG="obsidian-vault-sync-job"
+
+CRON_CMD="*/5 * * * * /opt/homebrew/bin/rclone bisync $HOME/ObsidianNotes obsidian-webdav:/ObsidianNotes --local-unicode-normalization --size-only --quiet >> $HOME/rclone-sync.log 2>&1 && echo \"\$(date) INFO  : [$SYNC_TAG] Background bisync successful\" > $HOME/rclone-last-success.txt # $SYNC_TAG"
+
+(crontab -l 2>/dev/null | grep -v "$SYNC_TAG"; echo "$CRON_CMD") | crontab -
+
+
 echo "✅ Installation complete!"
