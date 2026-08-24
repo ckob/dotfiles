@@ -1,7 +1,7 @@
 onboarding = false
 
 [theme]
-name = "catpuccin"
+name = "catppuccin"
 auto_switch = true
 # light_name = "catppuccin-latte"
 # dark_name = "catppuccin"
