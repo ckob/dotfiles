@@ -34,6 +34,7 @@ safe_link "$DIR/zsh" ~/.config/zsh
 safe_link "$DIR/.editorconfig" ~/.editorconfig
 safe_link "$DIR/.ideavimrc" ~/.ideavimrc
 safe_link "$DIR/git" ~/.config/git
+safe_link "$DIR/opencode/tui.jsonc" ~/.config/opencode/tui.jsonc
 safe_link "$DIR/nvim" ~/.config/nvim
 safe_link "$DIR/nvim-lazyvim" ~/.config/nvim-lazyvim
 safe_link "$DIR/zed/keymap.jsonc" ~/.config/zed/keymap.json
@@ -48,7 +49,6 @@ safe_link "$DIR/lazygit" ~/.config/lazygit
 safe_link "$DIR/herdr" ~/.config/herdr
 safe_link "$DIR/hammerspoon" ~/.config/hammerspoon
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
-
 safe_link "$DIR/obsidian/.obsidian.vimrc" ~/ObsidianNotes/.obsidian.vimrc
 
 echo "⚙️  Setting up VSCode flavors..."
