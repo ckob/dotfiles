@@ -36,7 +36,6 @@ safe_link "$DIR/.ideavimrc" ~/.ideavimrc
 safe_link "$DIR/git" ~/.config/git
 safe_link "$DIR/opencode/tui.jsonc" ~/.config/opencode/tui.jsonc
 safe_link "$DIR/nvim" ~/.config/nvim
-safe_link "$DIR/nvim-lazyvim" ~/.config/nvim-lazyvim
 safe_link "$DIR/zed/keymap.jsonc" ~/.config/zed/keymap.json
 safe_link "$DIR/zed/settings.jsonc" ~/.config/zed/settings.json
 safe_link "$DIR/zed/tasks.jsonc" ~/.config/zed/tasks.json
