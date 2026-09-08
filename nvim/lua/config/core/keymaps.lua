@@ -37,6 +37,22 @@ keymap({ "n", "v" }, "<leader>oC", function()
   vim.fn.system(string.format('code "%s" --goto "%s:%d:%d"', cwd, file, line, col))
 end, { desc = "Open current file and CWD in VS Code" })
 
+keymap({ "n", "v" }, "<leader>oz", function()
+  local file = vim.fn.expand("%:p")
+  local line = vim.fn.line(".")
+  local col = vim.fn.col(".")
+  vim.fn.system(string.format('zed "%s:%d:%d"', file, line, col))
+end, { desc = "Open current file in Zed" })
+
+keymap({ "n", "v" }, "<leader>oZ", function()
+  local file = vim.fn.expand("%:p")
+  local line = vim.fn.line(".")
+  local col = vim.fn.col(".")
+  local cwd = vim.fn.getcwd()
+  vim.fn.system(string.format('zed "%s" "%s:%d:%d"', cwd, file, line, col))
+end, { desc = "Open current file and CWD in Zed" })
+
+
 -- Only native Neovim
 if not vim.g.vscode then
   -- In vscode is set in settings.json
