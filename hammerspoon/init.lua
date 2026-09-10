@@ -53,6 +53,7 @@ local appShortcuts                 = {
   { key = "C", mnemonic = "[C]alendar",  app = "Calendar" },
   { key = "E", mnemonic = "[E]ditor",    app = "Visual Studio Code" },
   { key = "G", mnemonic = "[G]emini",    app = "Gemini" },
+  { key = "K", mnemonic = "[K]ubernetes", app = "Freelens" },
   { key = "M", mnemonic = "[M]ail",      app = "Gmail" },
   { key = "N", mnemonic = "[N]otes",     app = "Obsidian" },
   { key = "P", mnemonic = "[P]asswords", app = "1Password" },
