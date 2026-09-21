@@ -87,11 +87,12 @@ end
 local windowMode = hs.hotkey.modal.new(hyper, 'W')
 
 local windowActions = {
-  { key = 'H', desc = "Left Half",   dir = "left" },
-  { key = 'L', desc = "Right Half",  dir = "right" },
-  { key = 'K', desc = "Top Half",    dir = "top" },
-  { key = 'J', desc = "Bottom Half", dir = "bottom" },
-  { key = 'M', desc = "Maximize",    dir = "maximize" }
+  { key = 'H', desc = "Left Half",      dir = "left" },
+  { key = 'L', desc = "Right Half",     dir = "right" },
+  { key = 'K', desc = "Top Half",       dir = "top" },
+  { key = 'J', desc = "Bottom Half",    dir = "bottom" },
+  { key = 'M', desc = "Maximize",       dir = "maximize" },
+  { key = 'C', desc = "Center (60%)",   dir = "center" }
 }
 
 local windowHelpText = "🪟 Window Mode\n" ..
@@ -142,6 +143,12 @@ local function moveWindow(direction)
     f.h = screen.h / 2
   elseif direction == "maximize" then
     f = screen
+  elseif direction == "center" then
+    local wRatio = 0.60
+    f.w = screen.w * wRatio
+    f.h = screen.h
+    f.x = screen.x + (screen.w - f.w) / 2
+    f.y = screen.y
   end
 
   win:setFrame(f)
