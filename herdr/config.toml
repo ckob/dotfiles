@@ -7,14 +7,15 @@ auto_switch = true
 # dark_name = "catppuccin"
 
 [ui.toast]
-delivery = "off"
+delivery = "system"
 
 [ui.sound]
-enabled = false
+enabled = true
 
 [ui]
 show_agent_labels_on_pane_borders = false
 agent_panel_sort = "priority"
+status_indicators = "symbols"
 
 [keys]
 prefix = "ctrl+space"
