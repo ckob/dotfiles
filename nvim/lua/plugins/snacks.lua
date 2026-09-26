@@ -24,6 +24,10 @@ return {
       },
       sources = {
         explorer = {
+          auto_preview = false,
+          layout = {
+            preview = "main",
+          },
           win = {
             input = {
               keys = {
