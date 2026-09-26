@@ -9,14 +9,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- Set conceallevel for Markdown / Obsidian files
-local conceal_group = vim.api.nvim_create_augroup("MarkdownConceal", { clear = true })
+-- Set conceallevel and wrap for Markdown / Obsidian files
+local markdown_group = vim.api.nvim_create_augroup("MarkdownSettings", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
-  group = conceal_group,
+  group = markdown_group,
   pattern = { "markdown", "obsidian" },
   callback = function()
     vim.opt_local.conceallevel = 2
+    vim.opt_local.wrap = true
   end,
 })
 
