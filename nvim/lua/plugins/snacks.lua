@@ -24,6 +24,7 @@ return {
       },
       sources = {
         explorer = {
+          hidden = true,
           auto_preview = false,
           layout = {
             preview = "main",
