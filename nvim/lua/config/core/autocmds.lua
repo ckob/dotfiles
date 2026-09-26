@@ -23,20 +23,15 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Background sync on save Obsidian
 local vault_path = vim.fn.expand("~/ObsidianNotes")
+local sync_script = vault_path .. "/sync.sh"
 local sync_group = vim.api.nvim_create_augroup("ObsidianSync", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   group = sync_group,
   pattern = vault_path .. "/*",
   callback = function()
-    vim.fn.jobstart({
-      "/opt/homebrew/bin/rclone",
-      "bisync",
-      vault_path,
-      "obsidian-webdav:/ObsidianNotes",
-      "--local-unicode-normalization",
-      "--size-only",
-      "--quiet",
-    })
+    if vim.fn.executable(sync_script) == 1 then
+      vim.fn.jobstart({ sync_script }, { detach = true })
+    end
   end,
 })
