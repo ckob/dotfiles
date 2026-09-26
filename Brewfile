@@ -140,6 +140,8 @@ cask "hammerspoon"
 cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
+# File archiver
+cask "keka"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Open-source code editor
