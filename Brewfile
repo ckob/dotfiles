@@ -85,6 +85,8 @@ brew "powershell"
 brew "python-tk@3.13"
 # Persistent key-value database, with built-in net interface
 brew "redis"
+# Rsync for cloud storage
+brew "rclone"
 # SVG rendering tool and library
 brew "resvg"
 # Safe, concurrent, practical language
