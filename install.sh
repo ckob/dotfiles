@@ -50,6 +50,12 @@ safe_link "$DIR/hammerspoon" ~/.config/hammerspoon
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
 safe_link "$DIR/obsidian/.obsidian.vimrc" ~/ObsidianNotes/.obsidian.vimrc
 
+# Apply macOS customized defaults
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  echo "🍎 Applying macOS defaults..."
+  bash "$DIR/macos/set-defaults.sh"
+fi
+
 echo "⚙️  Setting up VSCode flavors..."
 
 # Create necessary directories if they don't exist
