@@ -5,6 +5,7 @@ tap "fcanas/tap"
 tap "grafana/grafana"
 tap "jesseduffield/lazygit"
 tap "jwbargsten/misc"
+tap "microsoft/aspire"
 tap "mongodb/brew"
 tap "nikitabobko/tap"
 tap "oven-sh/bun"
@@ -119,6 +120,8 @@ brew "fcanas/tap/mirror-displays", trusted: true
 cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# CLI for building observable, production-ready distributed applications
+cask "microsoft/aspire/aspire", trusted: true
 # Web browser focusing on privacy
 cask "brave-browser"
 # Open source IDE for exploring and testing APIs
