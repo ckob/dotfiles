@@ -1,5 +1,7 @@
 *.log
-*.sock
+*.sock*
 session.json
 session-history.json
+session-snapshots/
 release-notes.json
+
