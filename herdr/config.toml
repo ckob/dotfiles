@@ -22,7 +22,16 @@ prefix = "ctrl+space"
 navigate_workspace_up = "ctrl+p"
 navigate_workspace_down = "ctrl+n"
 last_pane = "prefix+space"
+goto = "prefix+/"
 
 [experimental]
 kitty_graphics = true
 pane_history = true
+
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "lazygit"
+description = "run lazygit"
+width = "90%"
+height = "90%"
