@@ -98,8 +98,6 @@ brew "sevenzip"
 brew "tectonic"
 # General purpose fuzzy finder TUI
 brew "television"
-# Programmatically correct mistyped console commands
-brew "thefuck"
 # Official tldr client written in Rust
 brew "tlrc"
 # Display directories as trees (with optional color/HTML output)

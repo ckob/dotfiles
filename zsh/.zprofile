@@ -1,7 +1,10 @@
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
+if [ -x "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Added by Toolbox App
-export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+if [ -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" ]; then
+  export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+fi
 

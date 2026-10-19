@@ -1,6 +1,9 @@
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- use latest release, remove to use latest commit
+  cond = function()
+    return vim.fn.isdirectory(vim.fn.expand("~/ObsidianNotes")) == 1
+  end,
   ---@module 'obsidian'
   ---@type obsidian.config
   opts = {

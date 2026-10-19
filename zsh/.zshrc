@@ -18,10 +18,12 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # ------------------------------------------------------------------------------
-# Homebrew
+# Homebrew (macOS)
 # ------------------------------------------------------------------------------
 # This sets up Homebrew paths, MANPATH, INFOPATH
-eval "$(brew shellenv)"
+if command -v brew >/dev/null 2>&1; then
+  eval "$(brew shellenv)"
+fi
 
 # ------------------------------------------------------------------------------
 # Path Management
@@ -30,9 +32,10 @@ eval "$(brew shellenv)"
 typeset -U path
 
 # Add local bin directories (higher priority)
-path=("$HOME/bin" $path)
+path=("$HOME/bin" "$HOME/.local/bin" $path)
 
 # Add language/tool bins (lower priority)
+path=($path "$HOME/.opencode/bin")
 path=($path "$HOME/.dotnet/tools")
 path=($path "$HOME/.cargo/bin")
 path=($path "$HOME/.codeium/windsurf/bin")
@@ -50,8 +53,10 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   path=(`gem environment gemdir`/bin $path)
 fi
 
-export JAVA_HOME=$(/usr/libexec/java_home)
-path=($path $JAVA_HOME/bin)
+if [ -x "/usr/libexec/java_home" ]; then
+  export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
+  [ -n "$JAVA_HOME" ] && path=($path $JAVA_HOME/bin)
+fi
 
 # Aspire config
 export ASPIRE_CONTAINER_RUNTIME=podman
@@ -75,8 +80,6 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     wd
-    nvm
-    thefuck
 )
 
 # --- Completions (must be loaded *before* sourcing OMZ) ---
@@ -98,13 +101,19 @@ source $ZSH/oh-my-zsh.sh
 # ------------------------------------------------------------------------------
 
 # fnm (faster node nvm)
-eval "$(fnm env --use-on-cd --shell zsh)"
+if command -v fnm >/dev/null 2>&1; then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
 
 # zoxide (better cd)
-eval "$(zoxide init zsh)"
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
 
 # fzf (fuzzy finder)
-eval "$(fzf --zsh)"
+if (( $+commands[fzf] )); then
+  eval "$(fzf --zsh)"
+fi
 
 # ------------------------------------------------------------------------------
 # Tool Configuration
