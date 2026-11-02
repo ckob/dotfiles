@@ -7,7 +7,7 @@ return {
       "json", "javascript", "typescript", "tsx", "yaml", "html", "css",
       "prisma", "markdown", "markdown_inline", "svelte", "bash", "lua",
       "vim", "dockerfile", "gitignore", "query", "vimdoc", "c", "c_sharp",
-      "xml", "regex",
+      "xml", "regex", "helm",
     },
   },
   config = function(_, opts)

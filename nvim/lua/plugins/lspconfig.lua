@@ -62,6 +62,17 @@ return {
     })
     vim.lsp.enable("cucumber_language_server")
 
+    vim.lsp.config("helm_ls", {
+      settings = {
+        ["helm-ls"] = {
+          yamlls = {
+            enabled = false,
+          },
+        },
+      },
+    })
+    vim.lsp.enable("helm_ls")
+
 
     local keymap = vim.keymap
     vim.api.nvim_create_autocmd("LspAttach", {
