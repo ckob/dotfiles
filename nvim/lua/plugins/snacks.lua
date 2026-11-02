@@ -6,7 +6,30 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    image = {},
+    image = {
+      resolve = function(file, src)
+        local vault = vim.fs.root(file, ".obsidian")
+        if vault then
+          local candidates = {
+            vault .. "/attachments/" .. src,
+            vault .. "/" .. src,
+            vim.fs.dirname(file) .. "/attachments/" .. src,
+            vim.fs.dirname(file) .. "/" .. src,
+          }
+          for _, path in ipairs(candidates) do
+            if vim.fn.filereadable(path) == 1 then
+              return path
+            end
+          end
+          -- Fallback: search the vault for the image file
+          local found = vim.fs.find(src, { path = vault, type = "file" })
+          if found and #found > 0 then
+            return found[1]
+          end
+        end
+        return nil
+      end,
+    },
     picker = {
       actions = {
         explorer_grep = function(picker)
