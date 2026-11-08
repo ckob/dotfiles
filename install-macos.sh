@@ -21,6 +21,10 @@ safe_link "$DIR/karabiner" ~/.config/karabiner
 safe_link "$DIR/ghostty" ~/.config/ghostty
 safe_link "$DIR/hammerspoon" ~/.config/hammerspoon
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
+safe_link "$DIR/herdr-app/settings.json" ~/.config/herdr-app/settings.json
+safe_link "$DIR/herdr-app/keys.json" ~/.config/herdr-app/keys.json
+safe_link "$DIR/herdr-app/themes/catppuccin.json" ~/.config/herdr-app/themes/catppuccin.json
+safe_link "$DIR/herdr-app/themes/catppuccin-latte.json" ~/.config/herdr-app/themes/catppuccin-latte.json
 safe_link "$DIR/obsidian/.obsidian.vimrc" ~/ObsidianNotes/.obsidian.vimrc
 
 # 3. Apply macOS customized defaults
