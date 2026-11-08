@@ -296,7 +296,7 @@ hyperBindings["h"] = toggleHelp
 hs.hotkey.bind(hyper, 'h', toggleHelp)
 
 -- =====================================================================
--- 7. KARABINER COMPLEX MODIFICATIONS (Ctrl + ; -> Esc & Tab -> Hyper)
+-- 7. KEYBOARD REMAPPING (Ctrl + ; -> Esc & Tab -> Hyper)
 -- =====================================================================
 
 local eventtap   = hs.eventtap
@@ -315,9 +315,9 @@ local function hasAnyMainModifier(flags)
   return flags.cmd or flags.alt or flags.ctrl or flags.shift
 end
 
-if _G.karabinerTap then _G.karabinerTap:stop() end
+if _G.keyboardTap then _G.keyboardTap:stop() end
 
-_G.karabinerTap = eventtap.new({ eventTypes.keyDown, eventTypes.keyUp }, function(event)
+_G.keyboardTap = eventtap.new({ eventTypes.keyDown, eventTypes.keyUp }, function(event)
   if syntheticInFlight then return false end
 
   local keyCode   = event:getKeyCode()
@@ -369,7 +369,7 @@ _G.karabinerTap = eventtap.new({ eventTypes.keyDown, eventTypes.keyUp }, functio
         tabHeldAsHyper = false
         tabUsedWithKey = false
 
-        -- Matches Karabiner's lazy: true on to_if_alone (fires Tab on release if no key was chorded)
+        -- Fire Tab on release if no key was chorded
         if sendPlainTab then
           syntheticInFlight = true
           eventtap.keyStroke({}, "tab", 0)
@@ -411,7 +411,7 @@ _G.karabinerTap = eventtap.new({ eventTypes.keyDown, eventTypes.keyUp }, functio
   return false
 end)
 
-_G.karabinerTap:start()
+_G.keyboardTap:start()
 
 -- =====================================================================
 -- 8. AUTO-RELOAD & WATCHDOG
@@ -431,8 +431,8 @@ _G.configWatcher = hs.pathwatcher.new(hs.configdir .. "/", reloadConfig):start()
 -- Keep eventtap alive and re-assert hidutil if macOS ever drops it
 if _G.tapWatchdog then _G.tapWatchdog:stop() end
 _G.tapWatchdog = hs.timer.doEvery(5, function()
-  if _G.karabinerTap and not _G.karabinerTap:isEnabled() then
-    _G.karabinerTap:start()
+  if _G.keyboardTap and not _G.keyboardTap:isEnabled() then
+    _G.keyboardTap:start()
   end
 end)
 

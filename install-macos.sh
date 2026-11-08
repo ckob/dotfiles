@@ -17,7 +17,6 @@ safe_link "$DIR/zed/keymap.jsonc" ~/.config/zed/keymap.json
 safe_link "$DIR/zed/settings.jsonc" ~/.config/zed/settings.json
 safe_link "$DIR/zed/tasks.jsonc" ~/.config/zed/tasks.json
 safe_link "$DIR/zed/scripts" ~/.config/zed/scripts
-safe_link "$DIR/karabiner" ~/.config/karabiner
 safe_link "$DIR/ghostty" ~/.config/ghostty
 safe_link "$DIR/hammerspoon" ~/.config/hammerspoon
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"

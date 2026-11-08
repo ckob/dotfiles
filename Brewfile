@@ -137,8 +137,6 @@ cask "google-drive"
 cask "google-gemini"
 # Desktop automation application
 cask "hammerspoon"
-# Keyboard customiser
-cask "karabiner-elements"
 # Open-source keystroke visualiser
 cask "keycastr"
 # File archiver
