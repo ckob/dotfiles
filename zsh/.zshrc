@@ -58,8 +58,11 @@ if [ -x "/usr/libexec/java_home" ]; then
   [ -n "$JAVA_HOME" ] && path=($path $JAVA_HOME/bin)
 fi
 
-# Aspire config
-export ASPIRE_CONTAINER_RUNTIME=podman
+# Aspire: Podman on macOS, Docker on Linux.
+case "$OSTYPE" in
+  darwin*) export ASPIRE_CONTAINER_RUNTIME=podman ;;
+  linux*) export ASPIRE_CONTAINER_RUNTIME=docker ;;
+esac
 
 # Note: The 'path' array is automatically tied to the $PATH variable.
 # No need for an extra `export PATH`.
