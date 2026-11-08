@@ -21,6 +21,7 @@ sudo apt-get update
 sudo apt-get install -y \
   zsh \
   git \
+  gitleaks \
   curl \
   wget \
   unzip \
@@ -53,28 +54,40 @@ if command -v batcat >/dev/null 2>&1 && ! command -v bat >/dev/null 2>&1; then
   ln -sf "$(command -v batcat)" "$HOME/.local/bin/bat"
 fi
 
-# 4. Install Oh My Zsh (unattended) if not already installed
+# 4. Install latest tree-sitter CLI (nvim-treesitter requires >= 0.26.1; apt is older)
+echo "🌳 Installing tree-sitter CLI..."
+case "$(uname -m)" in
+  aarch64|arm64) ts_arch="arm64" ;;
+  *) ts_arch="x64" ;;
+esac
+curl -fsSL -o /tmp/tree-sitter-cli.zip \
+  "https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-cli-linux-${ts_arch}.zip"
+mkdir -p "$HOME/.local/bin"
+unzip -qo /tmp/tree-sitter-cli.zip -d "$HOME/.local/bin"
+rm -f /tmp/tree-sitter-cli.zip
+
+# 5. Install Oh My Zsh (unattended) if not already installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   echo "🐚 Installing Oh My Zsh..."
   RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# 5. Install OpenCode if not already installed
+# 6. Install OpenCode if not already installed
 if ! command -v opencode >/dev/null 2>&1 && [ ! -x "$HOME/.opencode/bin/opencode" ]; then
   echo "🤖 Installing OpenCode..."
   curl -fsSL https://opencode.ai/v2/install | bash
 fi
 
-# 6. Install herdr if not already installed
+# 7. Install herdr if not already installed
 if ! command -v herdr >/dev/null 2>&1; then
   echo "🐑 Installing herdr..."
   curl -fsSL https://herdr.dev/install.sh | sh
 fi
 
-# 7. Link shared CLI dotfiles
+# 8. Link shared CLI dotfiles
 link_common_dotfiles
 
-# 8. Set Zsh as default shell if not already set
+# 9. Set Zsh as default shell if not already set
 if [ "$SHELL" != "$(command -v zsh)" ]; then
   echo "🐚 Setting Zsh as default shell..."
   sudo chsh -s "$(command -v zsh)" "$USER"
