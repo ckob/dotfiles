@@ -44,6 +44,9 @@ bind_prefix("/", "session.switch")
 bind_prefix("n", "client.tab.next")
 bind_prefix("p", "client.tab.previous")
 
+-- Focus sidebar tab / session filter: prefix+w
+bind_prefix("w", "client.sidebar.filter.focus")
+
 --------------------------------------------------------------------------------
 -- 3. CUSTOM COMMAND: LAZYGIT POPUP
 -- Herdr: [[keys.command]] key = "prefix+g", type = "popup", command = "lazygit"
