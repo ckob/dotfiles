@@ -18,6 +18,7 @@ safe_link "$DIR/zed/settings.jsonc" ~/.config/zed/settings.json
 safe_link "$DIR/zed/tasks.jsonc" ~/.config/zed/tasks.json
 safe_link "$DIR/zed/scripts" ~/.config/zed/scripts
 safe_link "$DIR/ghostty" ~/.config/ghostty
+safe_link "$DIR/rex" ~/.config/rex
 safe_link "$DIR/hammerspoon" ~/.config/hammerspoon
 defaults write org.hammerspoon.Hammerspoon MJConfigFile "$HOME/.config/hammerspoon/init.lua"
 safe_link "$DIR/herdr-app/settings.json" ~/.config/herdr-app/settings.json
