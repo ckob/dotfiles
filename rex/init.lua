@@ -1,12 +1,8 @@
--- rex.bind("ctrl+space>/", "session.switch")
--- rex.bind("ctrl+space>ctrl+space", "pane.send_key", { key = "ctrl+space" })
-
 -- ~/.config/rex/init.lua
 
 --------------------------------------------------------------------------------
 -- 1. TMUX-STYLE PREFIX ENGINE
 --------------------------------------------------------------------------------
--- Migrated from Herdr: prefix = "ctrl+space"
 local prefix = "ctrl+space"
 
 local function bind_prefix(key, action, args)
@@ -44,10 +40,9 @@ bind_prefix("space", "pane.focus_previous")
 -- Rex's equivalent to Herdr's workspace/agent picker is the session switcher
 bind_prefix("/", "session.switch")
 
--- Herdr: navigate_workspace_up = "ctrl+p" / navigate_workspace_down = "ctrl+n"
--- In Rex, workspaces map to Sessions (use client.tab.previous/next if you prefer tabs)
-rex.bind("ctrl+p", "session.previous")
-rex.bind("ctrl+n", "session.next")
+-- Tabs (Windows in Rex session) navigation: prefix+n / prefix+p
+bind_prefix("n", "client.tab.next")
+bind_prefix("p", "client.tab.previous")
 
 --------------------------------------------------------------------------------
 -- 3. CUSTOM COMMAND: LAZYGIT POPUP
