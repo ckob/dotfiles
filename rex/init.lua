@@ -37,15 +37,13 @@ bind_prefix("l", "pane.focus.right")
 bind_prefix("space", "pane.focus_previous")
 
 -- Herdr: goto = "prefix+/"
--- Rex's equivalent to Herdr's workspace/agent picker is the session switcher
-bind_prefix("/", "session.switch")
+-- Command palette (searches actions, tabs, windows, sessions): prefix+/
+bind_prefix("/", "client.palette.toggle")
+bind_prefix("[Slash]", "client.palette.toggle")
 
 -- Tabs (Windows in Rex session) navigation: prefix+n / prefix+p
 bind_prefix("n", "client.tab.next")
 bind_prefix("p", "client.tab.previous")
-
--- Focus sidebar tab / session filter: prefix+w
-bind_prefix("w", "client.sidebar.filter.focus")
 
 --------------------------------------------------------------------------------
 -- 3. CUSTOM COMMAND: LAZYGIT POPUP
