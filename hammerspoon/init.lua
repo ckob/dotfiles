@@ -310,6 +310,7 @@ local ESCAPE_CODE    = keyCodes["escape"] or 53
 local tabHeldAsHyper    = false
 local tabUsedWithKey    = false
 local syntheticInFlight = false
+local chordedKeys       = {}
 
 local function hasAnyMainModifier(flags)
   return flags.cmd or flags.alt or flags.ctrl or flags.shift
@@ -360,6 +361,7 @@ _G.keyboardTap = eventtap.new({ eventTypes.keyDown, eventTypes.keyUp }, function
       if not tabHeldAsHyper then
         tabHeldAsHyper = true
         tabUsedWithKey = false
+        chordedKeys    = {}
       end
       return true -- Swallow raw Tab keyDown
     else
@@ -385,26 +387,48 @@ _G.keyboardTap = eventtap.new({ eventTypes.keyDown, eventTypes.keyUp }, function
   -- Chording a key while Tab is held as Hyper
   -- -------------------------------------------------------------------
   if tabHeldAsHyper then
-    tabUsedWithKey = true
-    local keyName = keyCodes[keyCode]
+    if isKeyDown then
+      -- Ignore auto-repeats of keys that were already held down before Tab was pressed
+      if isRepeat and not chordedKeys[keyCode] then
+        return false
+      end
 
-    if isKeyDown and not isRepeat and keyName then
-      local lowerKey = string.lower(keyName)
+      tabUsedWithKey = true
+      chordedKeys[keyCode] = true
+      local keyName = keyCodes[keyCode]
 
-      -- 1) If bound inside Hammerspoon (App Launcher, Window/Insert modal, Help), call directly
-      if hyperBindings[lowerKey] then
-        hyperBindings[lowerKey]()
+      if not isRepeat and keyName then
+        local lowerKey = string.lower(keyName)
+
+        -- 1) If bound inside Hammerspoon (App Launcher, Window/Insert modal, Help), call directly
+        if hyperBindings[lowerKey] then
+          hyperBindings[lowerKey]()
+          return true
+        end
+
+        -- 2) Otherwise broadcast synthetic Hyper + Key for external apps (Homerow D/F, Gemini A, etc.)
+        syntheticInFlight = true
+        eventtap.keyStroke(hyper, keyCode, 0)
+        hs.timer.doAfter(0.01, function() syntheticInFlight = false end)
         return true
       end
 
-      -- 2) Otherwise broadcast synthetic Hyper + Key for external apps (Homerow D/F, Gemini A, etc.)
-      syntheticInFlight = true
-      eventtap.keyStroke(hyper, keyCode, 0)
-      hs.timer.doAfter(0.01, function() syntheticInFlight = false end)
       return true
+    else
+      -- On keyUp: only swallow if this key was actually chorded AFTER Tab was pressed.
+      -- If the key was pressed before Tab (fast typing rollover like "s" -> "Tab"),
+      -- let its keyUp pass through without cancelling plain Tab!
+      if chordedKeys[keyCode] then
+        chordedKeys[keyCode] = nil
+        return true
+      end
+      return false
     end
+  end
 
-    -- Swallow keyUp / repeats of chorded Hyper keys so underlying app doesn't type the raw letter
+  -- Also swallow trailing keyUp of a chorded key if the user released Tab before releasing the key
+  if not isKeyDown and chordedKeys[keyCode] then
+    chordedKeys[keyCode] = nil
     return true
   end
 
