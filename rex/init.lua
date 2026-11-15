@@ -14,7 +14,8 @@ rex.bind(prefix .. ">" .. prefix, "pane.send_key", { key = prefix })
 
 -- Standard Tmux multiplexer bindings (automatically generated)
 bind_prefix("c", "client.tab.new")
-bind_prefix("x", "pane.close")
+-- Close the focused pane, else the tab (like Herdr/tmux last-pane behavior)
+bind_prefix("x", "client.close")
 bind_prefix("z", "pane.zoom")
 
 -- Splits (% and " or v and s)
