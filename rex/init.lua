@@ -47,30 +47,51 @@ bind_prefix("n", "client.tab.next")
 bind_prefix("p", "client.tab.previous")
 
 --------------------------------------------------------------------------------
--- 3. CUSTOM COMMAND: LAZYGIT POPUP
--- Herdr: [[keys.command]] key = "prefix+g", type = "popup", command = "lazygit"
+-- 3. CUSTOM COMMANDS (POPUP OVERLAYS)
 --------------------------------------------------------------------------------
+local function open_popup(cmd, cwd, block_id)
+  local focus_cmd = block_id and string.format("; rex focus %s", block_id) or ""
+  rex.session.new_layer({
+    bounds = { 0.05, 0.05, 0.9, 0.9 },
+    focus = true,
+    layout = rex.layout.block({
+      flavor = "com.superlogical.terminal.shell",
+      options = {
+        cwd = cwd,
+        command = { "sh", "-c", cmd .. focus_cmd },
+      },
+    }),
+  })
+end
+
+-- Herdr: [[keys.command]] key = "prefix+g", type = "popup", command = "lazygit"
 rex.action({
   name = "lazygit_popup",
   title = "Open Lazygit Popup",
   run = function(ctx)
     local pwd = rex.block.call("com.superlogical.terminal", "pwd", {})
     local cwd = pwd and pwd.pwd and pwd.pwd:gsub("^file://[^/]*", "")
-
-    local focus_cmd = ctx.block_id and string.format("; rex focus %s", ctx.block_id) or ""
-    rex.session.new_layer({
-      bounds = { 0.05, 0.05, 0.9, 0.9 },
-      focus = true,
-      layout = rex.layout.block({
-        flavor = "com.superlogical.terminal.shell",
-        options = {
-          cwd = cwd,
-          command = { "sh", "-c", "lazygit" .. focus_cmd },
-        },
-      }),
-    })
+    open_popup("lazygit", cwd, ctx.block_id)
   end,
 })
 
 bind_prefix("g", "lazygit_popup")
+
+-- Herdr: prefix+e (open pane scrollback in Neovim for visual/copy mode)
+rex.action({
+  name = "scrollback_editor",
+  title = "Open Scrollback in Neovim",
+  run = function(ctx)
+    if not ctx.block_id then
+      return
+    end
+    local script = string.format(
+      'f=$(mktemp -t rex-scrollback) && rex capture -b %q --trim --unwrap > "$f" && nvim -R + -c "setlocal nomodifiable | nnoremap <buffer> q :q!<CR>" "$f"; rm -f "$f"',
+      ctx.block_id
+    )
+    open_popup(script, nil, ctx.block_id)
+  end,
+})
+
+bind_prefix("e", "scrollback_editor")
 
