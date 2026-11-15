@@ -30,6 +30,14 @@ bind_prefix("j", "pane.focus.down")
 bind_prefix("k", "pane.focus.up")
 bind_prefix("l", "pane.focus.right")
 
+-- Resize mode (prefix+r, then h/j/k/l to resize, = to balance, esc to exit)
+bind_prefix("r", "client.mode.enter", { name = "resize" })
+rex.bind("resize/h", "pane.resize", { direction = "left" })
+rex.bind("resize/j", "pane.resize", { direction = "down" })
+rex.bind("resize/k", "pane.resize", { direction = "up" })
+rex.bind("resize/l", "pane.resize", { direction = "right" })
+rex.bind("resize/=", "pane.balance")
+
 --------------------------------------------------------------------------------
 -- 2. HERDR CUSTOM SHORTCUT MIGRATIONS
 --------------------------------------------------------------------------------
