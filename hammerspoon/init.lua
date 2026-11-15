@@ -100,7 +100,7 @@ local appShortcuts                 = {
   { key = "P", mnemonic = "[P]asswords",  app = "1Password" },
   { key = "R", mnemonic = "[R]ider",      app = "Rider" },
   { key = "S", mnemonic = "[S]potify",    app = "Spotify" },
-  { key = "T", mnemonic = "[T]erminal",   app = "Ghostty" },
+  { key = "T", mnemonic = "[T]erminal",   app = "Rex Beta" },
   { key = "V", mnemonic = "[V]ideo",      app = "Google Meet" },
   { key = "X", mnemonic = "[X]at",        app = "Google Chat" },
   { key = "Z", mnemonic = "[Z]ed",        app = "Zed" }
